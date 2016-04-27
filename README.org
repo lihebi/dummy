@@ -14,7 +14,7 @@
 |           | cvs-1.11.4              | N/A                |                    |                      |                 | Require running cvs server, no exploit-cvs.c file found             |
 
 
-* CVS 1.11.4
+* man-1.5h1
 
 The stack trace for the bug manifest:
 #+BEGIN_EXAMPLE
@@ -40,8 +40,8 @@ Procedure:
 Some insights
 1. call graph is important
 2. follow crash stack is useful
-  only remove along the crash stack (dynamic symptom manifest stack)
+   only remove along the crash stack (dynamic symptom manifest stack)
 3. not necessary to keep the AST structure.
-  e.g. sometimes remove the if conditional structure entirely, but only keep one statement in the true branch.
+   e.g. sometimes remove the if conditional structure entirely, but only keep one statement in the true branch.
 4. keep the whole program, from the main function, so that we can utilize the bug triggering input.
    This will benefit a lot for the oracle.
