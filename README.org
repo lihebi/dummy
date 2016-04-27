@@ -1,0 +1,47 @@
+#+TITLE: Bug Reproduce
+
+| Important | benchmark               | original benchmark | patched version    | manual bug signature | patched version | Comment                                                             |
+|-----------+-------------------------+--------------------+--------------------+----------------------+-----------------+---------------------------------------------------------------------|
+|           | gzip-1.2.4              | Y                  | N (official patch) | N                    | N/A             |                                                                     |
+|           | ncompress-4.2.4         | Y                  | N (manual patch)   |                      |                 |                                                                     |
+|           | polymorph-0.4.0 (bug 1) | Y                  | N (manual patch)   |                      |                 |                                                                     |
+|           | polymorph-0.4.0 (bug 2) | N/A                |                    |                      |                 | No bug triggering input                                             |
+|           | bc-1.06 (bug 3)         | Y                  | N (manual patch)   |                      |                 | Don't know which bug (totally 3), skipped                           |
+|           | bc-1.06 (bug 1)         | N/A                |                    |                      |                 | No bug triggering input                                             |
+|           | bc-1.06 (bug 2)         | N/A                |                    |                      |                 | No bug triggering input                                             |
+| *******   | man-1.5h1               | Y                  | N (manual patch)   | Y                    | N               |                                                                     |
+|           | squid-2.3               | N/A                |                    |                      |                 | Complicate to run, don't know how to start and connect squid server |
+|           | cvs-1.11.4              | N/A                |                    |                      |                 | Require running cvs server, no exploit-cvs.c file found             |
+
+
+* CVS 1.11.4
+
+The stack trace for the bug manifest:
+#+BEGIN_EXAMPLE
+manfile.c:my_lith
+manfile.c:glob_for_file_ext_glob
+manfile.c:glob_for_file_ext
+manfile.c:glob_for_file
+manfile.c:manfile_from_sec_and_dir
+manfile.c:manfile_from_section
+manfile.c:manfile
+man.c:get_section_list
+man.c:main
+#+END_EXAMPLE
+
+Procedure:
+1. crash the original program
+2. patch the original program, run the bug triggering input
+3. find the full crash stack
+4. along that stack, remove statements, every time remove some, test the bug triggering input on it. Ensure:
+   1. bug is triggered (at the same place)
+   2. no bug for patched version (for the signature program)
+
+Some insights
+1. call graph is important
+2. follow crash stack is useful
+  only remove along the crash stack (dynamic symptom manifest stack)
+3. not necessary to keep the AST structure.
+  e.g. sometimes remove the if conditional structure entirely, but only keep one statement in the true branch.
+4. keep the whole program, from the main function, so that we can utilize the bug triggering input.
+   This will benefit a lot for the oracle.
