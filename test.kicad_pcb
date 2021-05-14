@@ -1,0 +1,45 @@
+(kicad_pcb (version 20171130) (host pcbnew 5.1.0)
+  (layers
+    (0 F.Cu signal)
+    (31 B.Cu signal)
+    (36 B.SilkS user)
+    (37 F.SilkS user)
+    (38 B.Mask user)
+    (39 F.Mask user)
+    ...
+  )
+  (net 0 "")
+  (net 1 "Net-(D1-Pad1)")
+  (net 2 "Net-(D2-Pad1)")
+  (net 3 "Net-(D3-Pad1)")
+  ...
+           
+  (module Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 5C9D1CDE)
+    (at 172.974 133.858)
+    (descr "Through hole straight pin header, 1x07, 2.54mm pitch, single row")
+    (tags "Through hole pin header THT 1x07 2.54mm single row")
+    (path /5CA84F21)
+    (fp_line (start 1.8 -1.8) (end -1.8 -1.8) (layer F.CrtYd) (width 0.05))
+    (fp_line (start 1.8 17.05) (end 1.8 -1.8) (layer F.CrtYd) (width 0.05))
+    (fp_line (start -1.8 17.05) (end 1.8 17.05) (layer F.CrtYd) (width 0.05))
+          ...
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x07_P2.54mm_Vertical.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+  ...
+
+
+  (segment (start 42.799 60.96) (end 43.1683 59.5817) (width 0.25) (layer B.Cu) (net 1))
+  (segment (start 51.2663 47.9475) (end 51.2663 51.7236) (width 0.25) (layer B.Cu) (net 1))
+  (segment (start 51.2663 51.7236) (end 43.4082 59.5817) (width 0.25) (layer B.Cu) (net 1))
+  (segment (start 43.4082 59.5817) (end 43.1683 59.5817) (width 0.25) (layer B.Cu) (net 1))
+  (segment (start 61.214 65.786) (end 61.5833 64.4077) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 61.5833 64.4077) (end 61.9617 64.4077) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 61.9617 64.4077) (end 69.6813 56.6881) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 69.6813 56.6881) (end 69.6813 52.9005) (width 0.25) (layer B.Cu) (net 2))
+  ...
+  
+)
